@@ -1,0 +1,79 @@
+@page
+@model GetAreaModel
+@{
+  ViewData["Title"] = "Area Information";
+}
+
+<h2>Top-10 Crimes in area</h2>  
+
+<br />
+Your search string: "@Model.Input"
+<br />
+Area Name:   @Model.arName 
+<br />
+Area Number: @Model.arNum
+<br />
+<br />
+@{
+   if (@Model.EX != null)
+	 {
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>  
+            <th>  
+                IUCR
+            </th>  
+            <th>  
+                PrimaryDesc 
+            </th>  
+            <th>  
+                SecondaryDesc
+            </th>  
+            <th>  
+                numTimes
+            </th>  
+             <th>  
+                percent area's Crime
+            </th>  
+             <th>  
+                arrest Rate
+            </th>  
+        </tr>  
+            
+    </thead>  
+    <tbody>  
+         @foreach (var item in Model.CrimeList)  
+        {  
+            <tr>   
+                <td>  
+                    @item.IUCR
+                </td>  
+                <td>  
+                    @item.PrimaryDesc
+                </td>  
+                <td>  
+                    @item.SecondaryDesc
+                </td>  
+                <td>  
+                    @item.numTimes
+                </td>  
+                <td>  
+                    @item.percentChicago
+                </td>
+                <td>  
+                    @item.arrestRate
+                </td>
+            </tr>  
+						
+        }  
+    </tbody>  
+</table> 
+
